@@ -1725,7 +1725,8 @@ extractVarianceRatio_multiV = function(obj.glmm.null,
 	 }	
     }else if(obj.glmm.null$traitType == "quantitative"){
          var2null = innerProduct(G, G*var_weights)
-         var2null_sample = innerProduct(G0_sample_tilde, G0_sample_tilde*var_weights)
+	 G0_sample_tilde = G0sample - XXVXsample_inv0 %*%  (XVsample0 %*% G0sample)
+	 var2null_sample = innerProduct(G0_sample_tilde, G0_sample_tilde*var_weights)
          var2null_noXadj = innerProduct(G_noXadj, G_noXadj*as.vector(t(var_weights) %*% I_mat))
 	 var2nullGE_vec = NULL
 	 if(!is.null(obj.glmm.null$eMat)){
