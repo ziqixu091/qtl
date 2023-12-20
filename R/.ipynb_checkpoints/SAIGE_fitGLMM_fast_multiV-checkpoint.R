@@ -1708,8 +1708,7 @@ extractVarianceRatio_multiV = function(obj.glmm.null,
 
     if(obj.glmm.null$traitType == "binary"){
          var2null = innerProduct(mu*(1-mu)*var_weights, G*G)
-         G0_sample_tilde = G0sample - XXVXsample_inv0 %*%  (XVsample0 %*% G0sample)
-  	 var2null_sample = innerProduct(as.vector(t(mu*(1-mu)*var_weights) %*% I_mat), G0_sample_tilde*G0_sample_tilde)
+         var2null_sample = innerProduct(as.vector(t(mu*(1-mu)*var_weights) %*% I_mat), G0_sample_tilde*G0_sample_tilde)
          var2null_noXadj = innerProduct(as.vector(t(mu*(1-mu)*var_weights) %*% I_mat), G_noXadj*G_noXadj)
 	 var2nullGE_vec = NULL
 	 if(!is.null(obj.glmm.null$eMat)){
@@ -1765,7 +1764,6 @@ extractVarianceRatio_multiV = function(obj.glmm.null,
 	 }	
     }else if(obj.glmm.null$traitType == "count_nb"){
 	 var2null = innerProduct(W, G*G) ##To update
-    	 G0_sample_tilde = G0sample - XXVXsample_inv0 %*%  (XVsample0 %*% G0sample)
 	 var2null_sample = innerProduct(as.vector(t(W) %*% I_mat), G0_sample_tilde*G0_sample_tilde)
          var2null_noXadj = innerProduct(as.vector(t(W) %*% I_mat), G_noXadj*G_noXadj)
 	 var2nullGE_vec = NULL
